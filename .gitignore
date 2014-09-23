@@ -18,4 +18,11 @@
 /config/secrets.yml
 /*/.keep
 /*/*/.keep
-/*/*/*/.keep
+/*/*/*/.keep/.anvil/cache
+/.anvil/buildpack
+/.anvil/cache
+/app/assets/images/.keep
+/app/controllers/concerns/.keep
+/app/models/concerns/.keep
+/vendor/assets/javascripts/.keep
+/vendor/assets/stylesheets/.keep

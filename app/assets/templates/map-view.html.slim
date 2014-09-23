@@ -1,0 +1,4 @@
+.container
+  section id="map" ng-controller="MapCtrl as ctrl"
+    div ui-map="myMap" ui-options="mapOptions" class="map-canvas" ui-event="{'map-click':'ctrl.addMarker($event, $params)'}"
+    div ng-repeat="marker in myMarkers" ui-map-marker="marker" ui-event="{'map-click': 'ctrl.markerClicked(marker)', 'map-mouseover': 'ctrl.markerHover(marker)'}"

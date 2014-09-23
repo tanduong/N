@@ -1,0 +1,39 @@
+@onGoogleMapReady = ->
+  setTimeout ->
+      $('body').html("<div ng-view></div>")
+      angular.bootstrap(document, ["myApp"])
+    , 1000
+
+app = angular.module "myApp", ["ngRoute", "ui.utils", "ui.map"]
+app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationProvider) ->
+    $routeProvider
+    .when "/",
+      templateUrl: '<%= asset_path("map-view.html") %>'
+  ]
+
+class MapCtrl
+  constructor: (@scope) ->
+    @scope.mapOptions =
+      center: new google.maps.LatLng(35.784, -78.670)
+      zoom: 15
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    @scope.myMarkers = []
+
+  addMarker: ($event, $params) ->
+    @scope.myMarkers.push new google.maps.Marker
+      map: @scope.myMap
+      position: $params[0].latLng
+
+  markerClicked: (m) ->
+    console.log(m)
+    index = @scope.myMarkers.indexOf(m)
+    m.setMap(null)
+    @scope.myMarkers.splice(index, 1)
+
+  markerHover: (m) ->
+    console.log(m)
+
+app.controller 'MapCtrl', [
+    '$scope'
+    MapCtrl
+  ]
