@@ -30,8 +30,14 @@ class MapCtrl
     m.setMap(null)
     @scope.myMarkers.splice(index, 1)
 
-  markerHover: (m) ->
-    console.log(m)
+  markerHover: (marker) ->
+    @scope.currentMarker = marker
+    @scope.currentMarkerLat = marker.getPosition().lat()
+    @scope.currentMarkerLng = marker.getPosition().lng()
+    @scope.myInfoWindow.open(@scope.myMap, marker)
+
+  setMarkerPosition: (marker, lat, lng) ->
+    marker.setPosition(new google.maps.LatLng(lat, lng))
 
 app.controller 'MapCtrl', [
     '$scope'

@@ -2,3 +2,15 @@
   section id="map" ng-controller="MapCtrl as ctrl"
     div ui-map="myMap" ui-options="mapOptions" class="map-canvas" ui-event="{'map-click':'ctrl.addMarker($event, $params)'}"
     div ng-repeat="marker in myMarkers" ui-map-marker="marker" ui-event="{'map-click': 'ctrl.markerClicked(marker)', 'map-mouseover': 'ctrl.markerHover(marker)'}"
+    div ui-map-info-window="myInfoWindow"
+      form.form.clearfix
+        legend
+          | Marker
+          .form-group
+            label.control-label for="lat" Lat:
+            input.form-control ng-model="currentMarkerLat"
+          .form-group
+            label.control-label for="lat" Lng:
+            input.form-control ng-model="currentMarkerLng"
+        a class="btn btn-primary pull-right" ng-click="ctrl.setMarkerPosition(currentMarker, currentMarkerLat, currentMarkerLng)"
+          | Set Position
