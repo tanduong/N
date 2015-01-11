@@ -3,5 +3,5 @@ When(/^I visit root path$/) do
 end
 
 Then(/^I should see something$/) do
-  expect(page).to have_content 'Add'
+  expect(page).to have_css 'body'
 end

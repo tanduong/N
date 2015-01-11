@@ -1,15 +1,4 @@
-@onGoogleMapReady = ->
-  setTimeout ->
-      $('body').html("<div ng-view></div>")
-      angular.bootstrap(document, ["myApp"])
-    , 1000
-
-app = angular.module "myApp", ["ngRoute", "ui.utils", "ui.map"]
-app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationProvider) ->
-    $routeProvider
-    .when "/",
-      templateUrl: '<%= asset_path("map-view.html") %>'
-  ]
+app = angular.module "myApp"
 
 class MapCtrl
   constructor: (@scope) ->

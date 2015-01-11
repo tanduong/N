@@ -26,3 +26,6 @@
 /app/models/concerns/.keep
 /vendor/assets/javascripts/.keep
 /vendor/assets/stylesheets/.keep
+
+# Ignore bower assets
+/bower_components
